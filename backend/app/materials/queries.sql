@@ -1,32 +1,40 @@
 -- getAll
-    SELECT * FROM `meetings`
+    SELECT * FROM `materials`
     ORDER BY `id` DESC;
 
--- getAllByClient
-    SELECT * FROM `meetings`
-    WHERE `client_id` = ?
+-- getAllByJob
+    SELECT * FROM `materials`
+    WHERE `job_id` = ?
+    ORDER BY `id` DESC;
+
+-- getAllByProcess
+    SELECT * FROM `materials`
+    WHERE `process_id` = ?
     ORDER BY `id` DESC;
 
 -- getByTitle
-    SELECT * FROM `meetings`
+    SELECT * FROM `materials`
     WHERE `title` = ?;
 
--- getId
-    SELECT `id` FROM `meetings`
-    WHERE `client_id` = ? AND `title` = ?;
+-- getIdByJob
+    SELECT `id` FROM `materials`
+    WHERE `job_id` = ? AND `title` = ?;
+
+-- getIdByProcess
+    SELECT `id` FROM `materials`
+    WHERE `process_id` = ? AND `title` = ?;
 
 -- addNew
-    INSERT INTO `meetings` (`client_id`, `title`, `description`, `date_time`)
+    INSERT INTO `materials` (`job_id`, `process_id`, `title`, `description`)
     VALUES (?, ? ,?, ?, ?);
 
 -- changeData
-    UPDATE `meetings`
+    UPDATE `materials`
     SET `title` = ?,
-        `description` = ?,
-        `date_time` = ?
+        `description` = ?
     WHERE `id` = ?;
 
 -- remove
-    DELETE FROM `meetings`
+    DELETE FROM `materials`
     WHERE `id` = ?;
     
