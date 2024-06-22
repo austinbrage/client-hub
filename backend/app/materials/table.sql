@@ -4,6 +4,7 @@ CREATE TABLE `materials` (
   `process_id` INT DEFAULT NULL,
   `title` VARCHAR(200) NOT NULL,
   `description` VARCHAR(200) DEFAULT NULL,
+  `possible_price` VARCHAR(200) DEFAULT NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   UNIQUE KEY `job_id_title_unique` (`job_id`,`title`),

@@ -25,13 +25,14 @@
     WHERE `process_id` = ? AND `title` = ?;
 
 -- addNew
-    INSERT INTO `materials` (`job_id`, `process_id`, `title`, `description`)
+    INSERT INTO `materials` (`job_id`, `process_id`, `title`, `description`, `possible_price`)
     VALUES (?, ? ,?, ?, ?);
 
 -- changeData
     UPDATE `materials`
     SET `title` = ?,
-        `description` = ?
+        `description` = ?,
+        `possible_price` = ?
     WHERE `id` = ?;
 
 -- remove
