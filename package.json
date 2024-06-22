@@ -1,0 +1,23 @@
+{
+  "name": "client-hub",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Backend revolutionary framework generation engine",
+  "scripts": {
+    "dev": "pnpm --parallel --filter \"**\" dev",
+    "dev:node": "pnpm --parallel --filter \"**\" dev:node",
+    "build": "pnpm --filter \"**\" build",
+    "lint": "pnpm --filter \"**\" lint",
+    "front:dev": "pnpm --filter \"./frontend\" dev",
+    "front:preview": "pnpm --filter \"./frontend\" preview",
+    "back:start": "pnpm --filter \"./backend\" start",
+    "back:build:check": "pnpm --filter \"./backend\" build:check",
+    "back:dev:node": "pnpm --filter \"./backend\" dev:node",
+    "back:dev:brage": "pnpm --filter \"./backend\" dev:brage",
+    "back:sqlcheck": "pnpm --filter \"./backend\" sqlcheck",
+    "back:sqlcheck:info": "pnpm --filter \"./backend\" sqlcheck:info",
+    "back:dbcreate": "pnpm --filter \"./backend\" dbcreate",
+    "back:dbcreate:dev": "pnpm --filter \"./backend\" dbcreate:dev",
+    "back:dbcreate:test": "pnpm --filter \"./backend\" dbcreate:test"
+  }
+}
