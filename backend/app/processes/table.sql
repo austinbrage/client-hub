@@ -1,0 +1,12 @@
+CREATE TABLE `processes` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `job_id` INT NOT NULL,
+  `title` VARCHAR(200) NOT NULL,
+  `status` VARCHAR(200) NOT NULL,
+  `description` VARCHAR(200) DEFAULT NULL,
+  `deadline` DATETIME DEFAULT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  UNIQUE KEY `job_id_title_unique` (`job_id`,`title`),
+  FOREIGN KEY (`job_id`) REFERENCES `jobs`(`id`) ON DELETE CASCADE
+);
