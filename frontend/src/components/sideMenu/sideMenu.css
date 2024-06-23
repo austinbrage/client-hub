@@ -1,0 +1,201 @@
+.sidemenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-height: 100vh;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 14rem;
+    color: #9ca3af; 
+    /* background-color: rgb(17, 24, 39);  */
+    background-color: rgba(42, 48, 61, 0.84); 
+    border-radius: 0.25rem;
+    padding: 1.5rem 1rem 0 1rem;
+    overflow-y: auto;
+    padding-bottom: 1rem;
+}
+
+.sidemenu::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+.sidemenu::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.sidemenu::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.sidemenu::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+.sidemenu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #9ca3af;
+    cursor: pointer;
+}
+
+.sidemenu-header-logo > img {
+    width: 2.3rem;
+    /* color: rgba(255, 255, 0, 0.625); */
+    color: rgba(255, 255, 0, 0.442);
+}
+
+.sidemenu-header p {
+    color: #9ca3af; 
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.03rem;
+}
+
+.sidemenu-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.sidemenu-items-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+    height: 3rem;
+    padding: 0 0 0 0.9rem;
+    margin-top: 0;
+    cursor: pointer;
+}
+
+.sidemenu-items-head:hover {
+    background: rgba(41, 55, 84, 0.57);
+}
+
+.sidemenu-items-head > p {
+    color: #9ca3af; 
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.06rem;
+}
+
+.sidemenu-items-head > span {
+    font-size: 1.4rem;
+    position: relative;
+    bottom: -0.2rem;
+    transform: rotate(-90deg);
+    transition: all 0.5s;
+}
+
+.sidemenu-items-head.selected > span {
+    bottom: 0rem;
+    transform: rotate(180deg);
+}
+
+.sidemenu-items-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0.2rem;
+    width: 95%;
+    margin: 0 0 0 1rem;
+    padding: 0.4rem 0 0.6rem 0.4rem;
+    margin-top: 0;
+    background: rgba(41, 55, 84, 0.57);
+    border-right: 0.2rem solid rgba(255, 255, 255, 0.5);
+    border-radius: 0.3rem;
+    display: none;
+    transition: display 0.3s;
+    overflow-x: auto;
+}
+
+.sidemenu-items-body.selected {
+    display: flex;
+}
+
+.sidemenu-items-body-subroute {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 2rem;
+    gap: 1rem;
+    width: 100%;
+    cursor: pointer;
+    transition: background 0.1s;
+}
+
+.sidemenu-items-body-subroute:hover {
+    background: rgba(68, 87, 123, 0.401);
+}
+
+
+.sidemenu-items-body-subroute > p:first-child {
+    font-weight: 600;
+    border-radius: 0.4rem;
+    min-width: 3.3rem;
+    text-align: center;
+    transform: scale(0.9);
+    border: 0.14rem solid;
+}
+
+.sidemenu-items-body-subroute > p.type-GET {
+    color: #9ca3afde;
+    background: rgba(0, 140, 255, 0.626);
+    border-color: rgba(0, 140, 255, 0.637);
+}
+
+.sidemenu-items-body-subroute > p.type-PUT {
+    color: #b0b7c4de;
+    background: rgba(221, 255, 0, 0.348);
+    border-color: rgba(221, 255, 0, 0.358);
+}
+
+.sidemenu-items-body-subroute > p.type-POST {
+    color: #b0b7c4de;
+    background: rgba(136, 255, 0, 0.493);
+    border-color: rgba(136, 255, 0, 0.574);
+}
+
+.sidemenu-items-body-subroute > p.type-DELETE {
+    color: #b0b7c4de;
+    background: rgba(255, 47, 0, 0.493);
+    border-color: rgba(255, 47, 0, 0.716);
+}
+
+.sidemenu-items-body-subroute > p:nth-child(2) {
+    font-style: italic;
+    letter-spacing: 0.035rem;
+}
+
+.sidemenu-items-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 16rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    background: #555;
+}
+
+.sidemenu-items-footer > p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 0.02rem;
+    color: #fff;
+    cursor: pointer;
+}
