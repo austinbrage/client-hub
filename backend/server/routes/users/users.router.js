@@ -1,27 +1,36 @@
 import { Router } from "express";
+import { Authorization } from "../../global/auth/authorization.js";
 import SanitizeGetRequests from './users.middlewares.js';
 import UsersController from './users.controllers.js';
 
 const createUsersRouter = ({ usersModel }) => {
    const usersRouter = Router();
+   const protectedUsers = Router();
 
    const sanitize = new SanitizeGetRequests();
    const usersController = new UsersController({ usersModel });
+   
+   const authorizer = new Authorization();
+   protectedUsers.use(authorizer.authMiddleware);
 
-   usersRouter.get('/getByEmail', usersController.getByEmail);
-   usersRouter.get('/getByExternalId', sanitize.getByExternalId, usersController.getByExternalId);
-   usersRouter.get('/getAll', sanitize.getAll, usersController.getAll);
    usersRouter.get('/getIdPassword', usersController.getIdPassword);
-   usersRouter.get('/getName', usersController.getName);
-   usersRouter.get('/getEmail', usersController.getEmail);
-   usersRouter.get('/getAuthor', usersController.getAuthor);
+   usersRouter.post('/openAuth', usersController.openAuth);
    usersRouter.post('/addNew', usersController.addNew);
-   usersRouter.put('/changeExternalId', usersController.changeExternalId);
-   usersRouter.put('/changeName', usersController.changeName);
-   usersRouter.put('/changePassword', usersController.changePassword);
-   usersRouter.put('/changeAuthor', usersController.changeAuthor);
-   usersRouter.put('/changeEmail', usersController.changeEmail);
-   usersRouter.delete('/remove', usersController.remove);
+
+   protectedUsers.get('/getByEmail', usersController.getByEmail);
+   protectedUsers.get('/getByExternalId', sanitize.getByExternalId, usersController.getByExternalId);
+   protectedUsers.get('/getAll', sanitize.getAll, usersController.getAll);
+   protectedUsers.get('/getName', usersController.getName);
+   protectedUsers.get('/getEmail', usersController.getEmail);
+   protectedUsers.get('/getAuthor', usersController.getAuthor);
+   protectedUsers.put('/changeExternalId', usersController.changeExternalId);
+   protectedUsers.put('/changeName', usersController.changeName);
+   protectedUsers.put('/changePassword', usersController.changePassword);
+   protectedUsers.put('/changeAuthor', usersController.changeAuthor);
+   protectedUsers.put('/changeEmail', usersController.changeEmail);
+   protectedUsers.delete('/remove', usersController.remove);
+
+   usersRouter.use(protectedUsers);
 
    return usersRouter;
 }

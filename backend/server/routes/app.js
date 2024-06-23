@@ -13,6 +13,7 @@ import createMeetingsRouter from "./meetings/meetings.router.js";
 import createProcessesRouter from "./processes/processes.router.js";
 import createUsersRouter from "./users/users.router.js";
 import { notFoundHandler } from "../global/handlers/notFound.js";
+import { Authorization } from "../global/auth/authorization.js";
 
 const createApp = ({
    pingPool,
@@ -25,6 +26,10 @@ const createApp = ({
 }) => {
    const app = express();
    const mainRouter = Router();
+   const protectedMain = Router();
+
+   const authorizer = new Authorization();
+   protectedMain.use(authorizer.authMiddleware);
 
    app.use(json());
    app.use(helmet());
@@ -33,12 +38,14 @@ const createApp = ({
    app.use(corsMiddleware());
 
    mainRouter.use(RESOURCES.PING, createHealthcareRouter({ pingPool }));
-   mainRouter.use(RESOURCES.CLIENTS, createClientsRouter({ clientsModel }));
-   mainRouter.use(RESOURCES.JOBS, createJobsRouter({ jobsModel }));
-   mainRouter.use(RESOURCES.MATERIALS, createMaterialsRouter({ materialsModel }));
-   mainRouter.use(RESOURCES.MEETINGS, createMeetingsRouter({ meetingsModel }));
-   mainRouter.use(RESOURCES.PROCESSES, createProcessesRouter({ processesModel }));
    mainRouter.use(RESOURCES.USERS, createUsersRouter({ usersModel }));
+   protectedMain.use(RESOURCES.CLIENTS, createClientsRouter({ clientsModel }));
+   protectedMain.use(RESOURCES.JOBS, createJobsRouter({ jobsModel }));
+   protectedMain.use(RESOURCES.MATERIALS, createMaterialsRouter({ materialsModel }));
+   protectedMain.use(RESOURCES.MEETINGS, createMeetingsRouter({ meetingsModel }));
+   protectedMain.use(RESOURCES.PROCESSES, createProcessesRouter({ processesModel }));
+
+   mainRouter.use(protectedMain);
 
    app.use(APP.VERSION_1, mainRouter);
    app.all('*', notFoundHandler);
