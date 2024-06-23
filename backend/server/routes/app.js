@@ -1,5 +1,6 @@
 import morgan from "morgan";
 import helmet from "helmet";
+import cookieParser from "cookie-parser";
 import express, { json, Router } from "express";
 import { APP, RESOURCES } from "./endpoints.js";
 import corsMiddleware from "../global/middlewares/cors.js";
@@ -28,6 +29,7 @@ const createApp = ({
    app.use(json());
    app.use(helmet());
    app.use(morgan('dev'));
+   app.use(cookieParser());
    app.use(corsMiddleware());
 
    mainRouter.use(RESOURCES.PING, createHealthcareRouter({ pingPool }));
