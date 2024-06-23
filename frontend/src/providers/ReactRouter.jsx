@@ -1,11 +1,13 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { swaggerRoutes } from '../api/routes.jsx';
 import { Home } from '../pages/home/Home.jsx';
 
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <Home/> 
-    }
+        element: <Home/>,
+    },
+    swaggerRoutes
 ]);
 
 export function ReactRouterProvider() {
