@@ -15,6 +15,13 @@ config();
 })();
 
 export const ENVIRONMENT = process.env.NODE_ENV ?? 'production';
+export const SIGNED_URL_EXPIRE = process.env.SIGNED_URL_EXPIRE ?? '3600';
+
+export const JWT_EXPIRE = process.env.JWT_EXPIRE;
+export const SECRET_KEY = process.env.SECRET_KEY;
+
+export const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+export const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 
 export const PORT = {
     development: process.env.DEV_PORT ?? 3000,
