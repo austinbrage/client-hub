@@ -1,35 +1,22 @@
+import axios from "axios";
 import { PATHS, API_URL } from "../endpoints.js";
 
 export class Healthcare {
 
-    constructor() {
-        this.url = `${API_URL}${PATHS.HEALTHCARE}`;
-    }
+    constructor({ timeout } = { timeout: 5000 }) {
+        const baseURL = `${API_URL}${PATHS.HEALTHCARE}`;
 
-    addPath = (route, api) => {
-        return `${api}${route}`;
+        this.fetchHealthcare = axios.create({ baseURL, timeout });
     }
 
     checkApi = async () => {
-        const url = new URL(this.addPath('/api', this.url));
-
-        const options = {
-            method: 'GET'                  
-        }
-
-        const response = await fetch(url, options);
-        return await response.json();
+        const response = await this.fetchHealthcare.get('/api');
+        return response.data;
     }
 
     checkDatabase = async () => {
-        const url = new URL(this.addPath('/database', this.url));
-
-        const options = {
-            method: 'GET'                  
-        }
-
-        const response = await fetch(url, options);
-        return await response.json();
+        const response = await this.fetchHealthcare.get('/database');
+        return response.data;
     }
 
 }
