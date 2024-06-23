@@ -237,11 +237,17 @@ class UsersController {
 
         const data = await this.usersModel.remove(validation.data);
 
-        return res.status(200).json(createOkResponse({
+        return res.status(200).clearCookie('token').json(createOkResponse({
             message: 'remove in users executed successfully',
             data: [data]
         }));
-    })
+    });
+
+    logout = (_req, res) => {
+        return res.status(200).clearCookie('token').json(createOkResponse({
+            message: 'logout successfully'
+        }));
+    }
 
 }
 

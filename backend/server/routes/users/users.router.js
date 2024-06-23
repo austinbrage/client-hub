@@ -16,6 +16,7 @@ const createUsersRouter = ({ usersModel }) => {
    usersRouter.get('/getIdPassword', usersController.getIdPassword);
    usersRouter.post('/openAuth', usersController.openAuth);
    usersRouter.post('/addNew', usersController.addNew);
+   usersRouter.post('/logout', usersController.logout);
 
    protectedUsers.get('/getByEmail', usersController.getByEmail);
    protectedUsers.get('/getByExternalId', sanitize.getByExternalId, usersController.getByExternalId);
