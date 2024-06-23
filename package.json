@@ -11,6 +11,7 @@
     "front:dev": "pnpm --filter \"./frontend\" dev",
     "front:preview": "pnpm --filter \"./frontend\" preview",
     "back:start": "pnpm --filter \"./backend\" start",
+    "back:build": "pnpm --filter \"./backend\" build",
     "back:build:check": "pnpm --filter \"./backend\" build:check",
     "back:dev:node": "pnpm --filter \"./backend\" dev:node",
     "back:dev:brage": "pnpm --filter \"./backend\" dev:brage",
