@@ -62,8 +62,8 @@ export class Authentication {
     async compareHash(data, res) {
 
         const isPassowordMatched = await bcrypt.compare(
-            data.validatedData.password,
-            data.modelResult.password 
+            data.inputPassword,
+            data.modelPassword 
         );
 
         if(!isPassowordMatched) {
@@ -74,7 +74,7 @@ export class Authentication {
         
         return this.sendTokenResponse({
             res, 
-            payload: { id: data.modelResult.id }, 
+            payload: { id: data.modelId }, 
             message: 'User validated successfully'
         });
     }

@@ -15,7 +15,7 @@ export class UsersValidation {
    getByEmail = (data) => this.schema.pick({ email: true }).safeParse(data)
    getByExternalId = (data) => this.schema.pick({ auth_provider: true, external_id: true }).safeParse(data)
    getAll = (data) => this.schema.pick({ id: true }).safeParse(data)
-   getIdPassword = (data) => this.schema.pick({ name: true }).safeParse(data)
+   getIdPassword = (data) => this.schema.pick({ name: true, password: true }).safeParse(data)
    getName = (data) => this.schema.pick({ name: true }).safeParse(data)
    getEmail = (data) => this.schema.pick({ email: true }).safeParse(data)
    getAuthor = (data) => this.schema.pick({ author: true }).safeParse(data)

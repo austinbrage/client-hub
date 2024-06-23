@@ -66,10 +66,19 @@ class UsersController {
 
         const data = await this.usersModel.getIdPassword(validation.data);
 
-        return res.status(200).json(createOkResponse({
-            message: 'getIdPassword in users executed successfully',
-            data
-        }));
+        if(data.length === 0) {
+            return res.status(401).json(createErrorResponse({
+                message: 'Incorrect username'
+            }));
+        }
+
+        const compareHashData = {
+            modelId: data[0].id,
+            modelPassword: data[0].password,
+            inputPassword: validation.data.password
+        };
+
+        return this.authenticator.compareHash(compareHashData, res);
     })
 
     getName = asyncErrorHandler(async (req, res) => {
@@ -116,12 +125,35 @@ class UsersController {
 
         if (!validation.success) return this.validationErr(res, validation.error);
 
-        const data = await this.usersModel.addNew(validation.data);
+        const name = await this.usersModel.getName(validation.data);
+        const email = await this.usersModel.getEmail(validation.data);
+        const author = await this.usersModel.getAuthor(validation.data);
 
-        return res.status(200).json(createOkResponse({
-            message: 'addNew in users executed successfully',
-            data: [data]
-        }));
+        if(name.length !== 0) {
+            return res.status(401).json(createErrorResponse({
+                message: 'Existing username'
+            }));
+        }
+
+        if(email.length !== 0) {
+            return res.status(401).json(createErrorResponse({
+                message: 'Existing email'
+            }));
+        }
+
+        if(author.length !== 0) {
+            return res.status(401).json(createErrorResponse({
+                message: 'Existing author'
+            }));
+        }
+
+        const completeData = {
+            ...validation.data,
+            auth_provider: null,
+            external_id: null
+        };
+        
+        return this.authenticator.registerHash(completeData, res);
     })
 
     changeExternalId = asyncErrorHandler(async (req, res) => {
@@ -155,12 +187,7 @@ class UsersController {
 
         if (!validation.success) return this.validationErr(res, validation.error);
 
-        const data = await this.usersModel.changePassword(validation.data);
-
-        return res.status(200).json(createOkResponse({
-            message: 'changePassword in users executed successfully',
-            data: [data]
-        }));
+        return this.authenticator.overwriteHash(validation.data, res);
     })
 
     changeAuthor = asyncErrorHandler(async (req, res) => {
