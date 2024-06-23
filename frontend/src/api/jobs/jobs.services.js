@@ -5,7 +5,7 @@ import { JobsValidations } from "./jobs.validations.js";
 
 export class Jobs {
 
-   constructor({ timeout = 5000 }) {
+   constructor({ timeout } = { timeout: 5000 }) {
       const baseURL = `${API_URL}${PATHS.JOBS}`;
 
       this.fetchJobs = axios.create({ baseURL, timeout });

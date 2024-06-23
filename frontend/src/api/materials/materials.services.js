@@ -5,7 +5,7 @@ import { MaterialsValidations } from "./materials.validations.js";
 
 export class Materials {
 
-   constructor({ timeout = 5000 }) {
+   constructor({ timeout } = { timeout: 5000 }) {
       const baseURL = `${API_URL}${PATHS.MATERIALS}`;
 
       this.fetchMaterials = axios.create({ baseURL, timeout });

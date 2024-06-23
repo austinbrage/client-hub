@@ -5,7 +5,7 @@ import { UsersValidations } from "./users.validations.js";
 
 export class Users {
 
-   constructor({ timeout = 5000 }) {
+   constructor({ timeout } = { timeout: 5000 }) {
       const baseURL = `${API_URL}${PATHS.USERS}`;
 
       this.fetchUsers = axios.create({ baseURL, timeout });

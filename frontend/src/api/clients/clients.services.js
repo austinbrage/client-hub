@@ -5,7 +5,7 @@ import { ClientsValidations } from "./clients.validations.js";
 
 export class Clients {
 
-   constructor({ timeout = 5000 }) {
+   constructor({ timeout } = { timeout: 5000 }) {
       const baseURL = `${API_URL}${PATHS.CLIENTS}`;
 
       this.fetchClients = axios.create({ baseURL, timeout });

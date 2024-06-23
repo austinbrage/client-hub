@@ -5,7 +5,7 @@ import { ProcessesValidations } from "./processes.validations.js";
 
 export class Processes {
 
-   constructor({ timeout = 5000 }) {
+   constructor({ timeout } = { timeout: 5000 }) {
       const baseURL = `${API_URL}${PATHS.PROCESSES}`;
 
       this.fetchProcesses = axios.create({ baseURL, timeout });
