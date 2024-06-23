@@ -31,7 +31,7 @@ export const useQueryHook = ({ queryKey, queryFn, staleTime = Infinity, enable =
             toast.success(`Api message: ${data.result.message}`, { id: TOAST_ID_QUERY });
         }
 
-    }, [isPending, isLoading, isError, data, error, TOAST_ID_QUERY]);
+    }, [isPending, isLoading, isError, data, error, queryKey, TOAST_ID_QUERY]);
 
     return {
         data: data?.success ? data.result.data : null,
