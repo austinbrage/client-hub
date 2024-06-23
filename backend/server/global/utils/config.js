@@ -12,12 +12,16 @@ config();
         `);
         process.exit(1);
     }
+
+    if(!process.env.SECRET_KEY) {
+        console.log('No secret key for authentication / authorization provided');
+        process.exit(1);
+    }
 })();
 
 export const ENVIRONMENT = process.env.NODE_ENV ?? 'production';
-export const SIGNED_URL_EXPIRE = process.env.SIGNED_URL_EXPIRE ?? '3600';
 
-export const JWT_EXPIRE = process.env.JWT_EXPIRE;
+export const JWT_EXPIRE = process.env.JWT_EXPIRE ?? '1h';
 export const SECRET_KEY = process.env.SECRET_KEY;
 
 export const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
