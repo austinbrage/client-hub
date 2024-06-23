@@ -1,0 +1,54 @@
+{
+  "getAll": {
+    "fields": []
+  },
+  "getAllByJob": {
+    "fields": [
+      "job_id"
+    ]
+  },
+  "getAllByProcess": {
+    "fields": [
+      "process_id"
+    ]
+  },
+  "getByTitle": {
+    "fields": [
+      "title"
+    ]
+  },
+  "getIdByJob": {
+    "fields": [
+      "job_id",
+      "title"
+    ]
+  },
+  "getIdByProcess": {
+    "fields": [
+      "process_id",
+      "title"
+    ]
+  },
+  "addNew": {
+    "fields": [
+      "job_id",
+      "process_id",
+      "title",
+      "description",
+      "possible_price"
+    ]
+  },
+  "changeData": {
+    "fields": [
+      "title",
+      "description",
+      "possible_price",
+      "id"
+    ]
+  },
+  "remove": {
+    "fields": [
+      "id"
+    ]
+  }
+}

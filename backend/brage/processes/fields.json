@@ -1,0 +1,44 @@
+{
+  "getAll": {
+    "fields": []
+  },
+  "getAllByJob": {
+    "fields": [
+      "job_id"
+    ]
+  },
+  "getByTitle": {
+    "fields": [
+      "title"
+    ]
+  },
+  "getId": {
+    "fields": [
+      "job_id",
+      "title"
+    ]
+  },
+  "addNew": {
+    "fields": [
+      "job_id",
+      "title",
+      "status",
+      "description",
+      "deadline"
+    ]
+  },
+  "changeData": {
+    "fields": [
+      "title",
+      "status",
+      "description",
+      "deadline",
+      "id"
+    ]
+  },
+  "remove": {
+    "fields": [
+      "id"
+    ]
+  }
+}

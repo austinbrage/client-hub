@@ -1,0 +1,10 @@
+{
+   "id": "number",
+   "user_id": "number",
+   "name": "string",
+   "contact_number": "string",
+   "contact_email": "string",
+   "description": "string | null",
+   "created_at": "Date | null",
+   "updated_at": "Date | null"
+}

@@ -1,0 +1,10 @@
+{
+   "id": "number",
+   "job_id": "number | null",
+   "process_id": "number | null",
+   "title": "string",
+   "description": "string | null",
+   "possible_price": "string | null",
+   "created_at": "Date | null",
+   "updated_at": "Date | null"
+}

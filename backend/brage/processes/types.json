@@ -1,0 +1,10 @@
+{
+   "id": "number",
+   "job_id": "number",
+   "title": "string",
+   "status": "string",
+   "description": "string | null",
+   "deadline": "Date | null",
+   "created_at": "Date | null",
+   "updated_at": "Date | null"
+}

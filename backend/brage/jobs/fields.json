@@ -1,0 +1,46 @@
+{
+  "getAll": {
+    "fields": []
+  },
+  "getAllByClient": {
+    "fields": [
+      "client_id"
+    ]
+  },
+  "getByTitle": {
+    "fields": [
+      "title"
+    ]
+  },
+  "getId": {
+    "fields": [
+      "client_id",
+      "title"
+    ]
+  },
+  "addNew": {
+    "fields": [
+      "client_id",
+      "title",
+      "price",
+      "status",
+      "deadline",
+      "description"
+    ]
+  },
+  "changeData": {
+    "fields": [
+      "title",
+      "price",
+      "status",
+      "deadline",
+      "description",
+      "id"
+    ]
+  },
+  "remove": {
+    "fields": [
+      "id"
+    ]
+  }
+}

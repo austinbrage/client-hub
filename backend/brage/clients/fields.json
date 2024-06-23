@@ -1,0 +1,44 @@
+{
+  "getAll": {
+    "fields": []
+  },
+  "getAllByUser": {
+    "fields": [
+      "user_id"
+    ]
+  },
+  "getByName": {
+    "fields": [
+      "name"
+    ]
+  },
+  "getId": {
+    "fields": [
+      "user_id",
+      "name"
+    ]
+  },
+  "addNew": {
+    "fields": [
+      "user_id",
+      "name",
+      "contact_number",
+      "contact_email",
+      "description"
+    ]
+  },
+  "changeData": {
+    "fields": [
+      "name",
+      "contact_number",
+      "contact_email",
+      "description",
+      "id"
+    ]
+  },
+  "remove": {
+    "fields": [
+      "id"
+    ]
+  }
+}
