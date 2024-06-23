@@ -1,4 +1,6 @@
 import { UsersValidation } from './users.validations.js';
+import { GoogleOpenAuth } from '../../global/auth/openAuth.js';
+import { Authentication } from '../../global/auth/authentication.js';
 import { asyncErrorHandler } from './../../global/handlers/asyncError.js';
 import { createOkResponse, createErrorResponse } from './../../global/utils/responses.js';
 
@@ -7,6 +9,8 @@ class UsersController {
     constructor({ usersModel }) {
         this.usersModel = usersModel;
         this.validateUsers = new UsersValidation();
+        this.authenticator = new Authentication({ usersModel });
+        this.googleAuthenticator = new GoogleOpenAuth({ usersModel });
     }
 
     validationErr(res, validationError) {
