@@ -1,7 +1,3 @@
--- getId
-    SELECT `id` FROM `users` 
-    WHERE `api_key` = ?;
-
 -- getByEmail
     SELECT `id` FROM `users` 
     WHERE `email` = ?;
@@ -11,11 +7,7 @@
     WHERE `auth_provider` = ? AND `external_id` = ?;
 
 -- getAll
-    SELECT `id`, `name`, `email`, `author`, `api_key`, `membership_type` FROM `users` 
-    WHERE `id` = ?;
-
--- getMembership
-    SELECT `membership_type` FROM `users`
+    SELECT `id`, `name`, `email`, `author` FROM `users` 
     WHERE `id` = ?;
 
 -- getIdPassword
