@@ -1,9 +1,4 @@
 {
-  "getId": {
-    "fields": [
-      "api_key"
-    ]
-  },
   "getByEmail": {
     "fields": [
       "email"
@@ -16,11 +11,6 @@
     ]
   },
   "getAll": {
-    "fields": [
-      "id"
-    ]
-  },
-  "getMembership": {
     "fields": [
       "id"
     ]

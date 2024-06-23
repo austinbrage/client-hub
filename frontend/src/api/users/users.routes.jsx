@@ -4,18 +4,6 @@ import { QueryViewerWithData } from '../../components/viewers/Queries.jsx';
 
 export const usersSubroutes = [
     {
-        path: 'getId',
-        name: 'getId',
-        element: (
-            <QueryViewerWithData
-                useQueryHook={usersHooks.useUsersGetId}
-                initialData={{
-                    api_key: 'api_key value',
-                }}
-            />
-        )
-    },
-    {
         path: 'getByEmail',
         name: 'getByEmail',
         element: (
@@ -46,18 +34,6 @@ export const usersSubroutes = [
         element: (
             <QueryViewerWithData
                 useQueryHook={usersHooks.useUsersGetAll}
-                initialData={{
-                    id: 0,
-                }}
-            />
-        )
-    },
-    {
-        path: 'getMembership',
-        name: 'getMembership',
-        element: (
-            <QueryViewerWithData
-                useQueryHook={usersHooks.useUsersGetMembership}
                 initialData={{
                     id: 0,
                 }}

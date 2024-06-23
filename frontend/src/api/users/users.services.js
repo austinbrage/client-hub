@@ -12,14 +12,6 @@ export class Users {
       this.validateUsers = new UsersValidations();
    }
 
-   getId = async (args) => {
-      const validation = this.validateUsers.getId(args);
-      if(!validation.success) throw new ValidationError(validation.error.issues);
-
-      const response = await this.fetchUsers.get('/getId', { params: validation.data });
-      return response.data;
-   }
-
    getByEmail = async (args) => {
       const validation = this.validateUsers.getByEmail(args);
       if(!validation.success) throw new ValidationError(validation.error.issues);
@@ -41,14 +33,6 @@ export class Users {
       if(!validation.success) throw new ValidationError(validation.error.issues);
 
       const response = await this.fetchUsers.get('/getAll', { params: validation.data });
-      return response.data;
-   }
-
-   getMembership = async (args) => {
-      const validation = this.validateUsers.getMembership(args);
-      if(!validation.success) throw new ValidationError(validation.error.issues);
-
-      const response = await this.fetchUsers.get('/getMembership', { params: validation.data });
       return response.data;
    }
 

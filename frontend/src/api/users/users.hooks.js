@@ -5,11 +5,6 @@ import { useMutationHook } from '../../utils/mutations.js';
 const usersService = new Users();
 
 
-export const useUsersGetId = (args) => useQueryHook({
-    queryKey: ['users', 'getId', args],
-    queryFn: () => usersService.getId(args)
-});
-
 export const useUsersGetByEmail = (args) => useQueryHook({
     queryKey: ['users', 'getByEmail', args],
     queryFn: () => usersService.getByEmail(args)
@@ -23,11 +18,6 @@ export const useUsersGetByExternalId = (args) => useQueryHook({
 export const useUsersGetAll = (args) => useQueryHook({
     queryKey: ['users', 'getAll', args],
     queryFn: () => usersService.getAll(args)
-});
-
-export const useUsersGetMembership = (args) => useQueryHook({
-    queryKey: ['users', 'getMembership', args],
-    queryFn: () => usersService.getMembership(args)
 });
 
 export const useUsersGetIdPassword = (args) => useQueryHook({

@@ -10,18 +10,6 @@ class UsersMysql {
         this.connectionHandler = connectionHandler.connect;
     }
 
-    getId = async ({ api_key }) => {
-        return this.connectionHandler(this.pool, async (connection) => {
-
-            const [rows] = await connection.execute(
-               usersQueries.getId,
-               [api_key]
-            );
-
-            return rows;
-        })
-    }
-
     getByEmail = async ({ email }) => {
         return this.connectionHandler(this.pool, async (connection) => {
 
@@ -51,18 +39,6 @@ class UsersMysql {
 
             const [rows] = await connection.execute(
                usersQueries.getAll,
-               [id]
-            );
-
-            return rows;
-        })
-    }
-
-    getMembership = async ({ id }) => {
-        return this.connectionHandler(this.pool, async (connection) => {
-
-            const [rows] = await connection.execute(
-               usersQueries.getMembership,
                [id]
             );
 

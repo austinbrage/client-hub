@@ -8,15 +8,13 @@ const createUsersRouter = ({ usersModel }) => {
    const sanitize = new SanitizeGetRequests();
    const usersController = new UsersController({ usersModel });
 
-   usersRouter.get('/getId', sanitize.getId, usersController.getId);
-   usersRouter.get('/getByEmail', sanitize.getByEmail, usersController.getByEmail);
+   usersRouter.get('/getByEmail', usersController.getByEmail);
    usersRouter.get('/getByExternalId', sanitize.getByExternalId, usersController.getByExternalId);
    usersRouter.get('/getAll', sanitize.getAll, usersController.getAll);
-   usersRouter.get('/getMembership', sanitize.getMembership, usersController.getMembership);
-   usersRouter.get('/getIdPassword', sanitize.getIdPassword, usersController.getIdPassword);
-   usersRouter.get('/getName', sanitize.getName, usersController.getName);
-   usersRouter.get('/getEmail', sanitize.getEmail, usersController.getEmail);
-   usersRouter.get('/getAuthor', sanitize.getAuthor, usersController.getAuthor);
+   usersRouter.get('/getIdPassword', usersController.getIdPassword);
+   usersRouter.get('/getName', usersController.getName);
+   usersRouter.get('/getEmail', usersController.getEmail);
+   usersRouter.get('/getAuthor', usersController.getAuthor);
    usersRouter.post('/addNew', usersController.addNew);
    usersRouter.put('/changeExternalId', usersController.changeExternalId);
    usersRouter.put('/changeName', usersController.changeName);

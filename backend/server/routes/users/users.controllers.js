@@ -20,21 +20,8 @@ class UsersController {
         }));
     }
 
-    getId = asyncErrorHandler(async (req, res) => {
-        const validation = this.validateUsers.getId(req.sanitizedData);
-
-        if (!validation.success) return this.validationErr(res, validation.error);
-
-        const data = await this.usersModel.getId(validation.data);
-
-        return res.status(200).json(createOkResponse({
-            message: 'getId in users executed successfully',
-            data
-        }));
-    })
-
     getByEmail = asyncErrorHandler(async (req, res) => {
-        const validation = this.validateUsers.getByEmail(req.sanitizedData);
+        const validation = this.validateUsers.getByEmail(req.query);
 
         if (!validation.success) return this.validationErr(res, validation.error);
 
@@ -72,21 +59,8 @@ class UsersController {
         }));
     })
 
-    getMembership = asyncErrorHandler(async (req, res) => {
-        const validation = this.validateUsers.getMembership(req.sanitizedData);
-
-        if (!validation.success) return this.validationErr(res, validation.error);
-
-        const data = await this.usersModel.getMembership(validation.data);
-
-        return res.status(200).json(createOkResponse({
-            message: 'getMembership in users executed successfully',
-            data
-        }));
-    })
-
     getIdPassword = asyncErrorHandler(async (req, res) => {
-        const validation = this.validateUsers.getIdPassword(req.sanitizedData);
+        const validation = this.validateUsers.getIdPassword(req.query);
 
         if (!validation.success) return this.validationErr(res, validation.error);
 
@@ -99,7 +73,7 @@ class UsersController {
     })
 
     getName = asyncErrorHandler(async (req, res) => {
-        const validation = this.validateUsers.getName(req.sanitizedData);
+        const validation = this.validateUsers.getName(req.query);
 
         if (!validation.success) return this.validationErr(res, validation.error);
 
@@ -112,7 +86,7 @@ class UsersController {
     })
 
     getEmail = asyncErrorHandler(async (req, res) => {
-        const validation = this.validateUsers.getEmail(req.sanitizedData);
+        const validation = this.validateUsers.getEmail(req.query);
 
         if (!validation.success) return this.validationErr(res, validation.error);
 
@@ -125,7 +99,7 @@ class UsersController {
     })
 
     getAuthor = asyncErrorHandler(async (req, res) => {
-        const validation = this.validateUsers.getAuthor(req.sanitizedData);
+        const validation = this.validateUsers.getAuthor(req.query);
 
         if (!validation.success) return this.validationErr(res, validation.error);
 
