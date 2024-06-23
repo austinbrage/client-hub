@@ -12,6 +12,11 @@ export class UsersValidation {
       auth_provider: z.union([z.string(), z.null()]),
    })
 
+   openAuthSchema = z.object({
+      auth_provider: z.string(),
+      code: z.string()  
+   })
+
    getByEmail = (data) => this.schema.pick({ email: true }).safeParse(data)
    getByExternalId = (data) => this.schema.pick({ auth_provider: true, external_id: true }).safeParse(data)
    getAll = (data) => this.schema.pick({ id: true }).safeParse(data)
@@ -25,6 +30,7 @@ export class UsersValidation {
    changePassword = (data) => this.schema.pick({ password: true, id: true }).safeParse(data)
    changeAuthor = (data) => this.schema.pick({ author: true, id: true }).safeParse(data)
    changeEmail = (data) => this.schema.pick({ email: true, id: true }).safeParse(data)
+   openAuth = (data) => this.openAuthSchema.pick({ auth_provider: true, code: true }).safeParse(data)
    remove = (data) => this.schema.pick({ id: true }).safeParse(data)
 }
 

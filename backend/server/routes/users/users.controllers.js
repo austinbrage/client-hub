@@ -216,6 +216,20 @@ class UsersController {
         }));
     })
 
+    openAuth = asyncErrorHandler(async (req, res) => {
+        const validation = this.validateUsers.openAuth(req.body);
+
+        if(!validation.success) return this.validationErr(res, validation.error);
+
+        if(validation.data.auth_provider !== 'google') {
+            return res.status(401).json(createErrorResponse({
+                message: 'OAuth Provider not handled by the API'
+            }));
+        }
+
+        return this.authenticator.signWithGoogleID(validation.data, res);
+    });
+
     remove = asyncErrorHandler(async (req, res) => {
         const validation = this.validateUsers.remove(req.body);
 
