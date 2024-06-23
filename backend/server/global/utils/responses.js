@@ -1,10 +1,9 @@
-export const createOkResponse = ({ message, token, data }) => {
+export const createOkResponse = ({ message, data }) => {
     return {
         success: true,
         result: {
             message: message,
-            data: data ? data : null,
-            token: token ? token : null
+            data: data ? data : null
         }
     }
 }
@@ -16,7 +15,7 @@ export const createErrorResponse = ({ message, error }) => {
         error: {
             status: 'fail',
             message: message,
-            validationError: error ? error : null
+            details: error ? error : null
         }
     }
 }
